@@ -1,0 +1,204 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    overflow-x: hidden; /* Mencegah scroll horizontal */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Base Layout untuk Setiap Row */
+.row {
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* Row 1: Hero / Sambutan */
+.hero {
+    background-color: #ffffff;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+.hero p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Row 2: Testimonials Marquee Loop */
+.testimonials {
+    background-color: #2c3e50;
+    color: #ffffff;
+    width: 100%;
+}
+.testimonials h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+.marquee-content {
+    display: flex;
+    width: max-content;
+    /* Animasi berjalan tanpa henti ke kiri */
+    animation: scroll-left 15s linear infinite;
+}
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px 40px;
+    margin: 0 15px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Keyframes untuk efek jalan dari kanan ke kiri terus menerus */
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+    /* Translasi -50% berfungsi mulus karena konten diduplikasi di HTML */
+}
+
+/* Row 3: Pricing Tiers */
+.pricing {
+    background-color: #f8f9fa;
+    width: 100%;
+    text-align: center;
+}
+.pricing h2 {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #2c3e50;
+}
+.pricing-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 40px 30px;
+    width: 320px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    text-align: left;
+    position: relative;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+.card .price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 25px;
+}
+.card .price span {
+    font-size: 1rem;
+    color: #777;
+    font-weight: normal;
+}
+.card ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+.card ul li {
+    margin-bottom: 12px;
+    color: #555;
+    position: relative;
+    padding-left: 25px;
+}
+.card ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+.card button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.card button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling Khusus Tier Premium */
+.card.premium {
+    border: 2px solid #ffc107;
+    background-color: #fffdf5;
+}
+.card.premium .badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffc107;
+    color: #333;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+.card.premium button {
+    background-color: #ffc107;
+    color: #333;
+}
+.card.premium button:hover {
+    background-color: #e0a800;
+}
+
+/* Animasi Muncul dari Bawah saat di-scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(80px); /* Posisi awal ada di bawah */
+    transition: all 1s ease-out; /* Durasi dan efek transisi */
+}
+
+/* Class ini akan ditambahkan oleh JavaScript saat elemen masuk ke layar */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
